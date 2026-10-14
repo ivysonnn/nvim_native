@@ -10,6 +10,18 @@
 return {
 	cmd = { "lua-language-server" },
 	filetypes = { "lua" },
+	-- Without a root the server has no workspace to index, so it answers
+	-- completion requests with nothing at all.
+	root_markers = {
+		".luarc.json",
+		".luarc.jsonc",
+		"luarc.json",
+		".stylua.toml",
+		"stylua.toml",
+		"selene.toml",
+		{ "dune-project", "dune-workspace" },
+		".git",
+	},
 	settings = {
 		Lua = {
 			-- Neovim embeds LuaJIT, not vanilla Lua 5.1.

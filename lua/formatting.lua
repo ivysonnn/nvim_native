@@ -37,7 +37,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 			-- No external formatter: try LSP
 			for _, cl in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
 				if cl:supports_method("textDocument/formatting") then
-					vim.lsp.buf.format({ bufnr = bufnr, async = false })
+					vim.lsp.format({ bufnr = bufnr, async = false })
 					break
 				end
 			end
